@@ -12,4 +12,12 @@ public interface TvShowsService {
 
 	TvShows putTvShowById(TvShows tvShows, long id);
 
+	void addOneEp(long id);
+
+	void subOneEp(long id);
+
+	TvShows getTvShowById(long id);
+
+	List<TvShows> getTvShowByName(String name);
+
 }

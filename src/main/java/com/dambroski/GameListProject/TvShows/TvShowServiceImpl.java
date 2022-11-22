@@ -53,4 +53,37 @@ public class TvShowServiceImpl implements TvShowsService {
 		return repository.save(newTvShows);
 	}
 
+	@Override
+	public void addOneEp(long id) {
+		TvShows tvShow = repository.findById(id).get();
+		if(tvShow.getEpWatched() < tvShow.getEpNumber()){
+			tvShow.setEpWatched(tvShow.getEpWatched() + 1);
+		}
+		repository.save(tvShow);
+		
+		
+	}
+
+	@Override
+	public void subOneEp(long id) {
+		TvShows tvShows = repository.findById(id).get();
+		if(tvShows.getEpWatched() < tvShows.getEpNumber()) {
+			tvShows.setEpWatched(tvShows.getEpNumber() - 1 );
+		}
+		repository.save(tvShows);
+		
+	}
+
+	@Override
+	public TvShows getTvShowById(long id) {
+		return repository.findById(id).get();
+	}
+
+	@Override
+	public List<TvShows> getTvShowByName(String name) {
+		
+		return repository.findByName(name);
+	}
+
+	
 }

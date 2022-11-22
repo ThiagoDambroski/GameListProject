@@ -21,6 +21,16 @@ public class TvShowsController {
 		return service.getAllTvShow();
 	}
 	
+	@GetMapping("/{tvShowId")
+	public TvShows getTvShowById(@PathVariable("tvShowId") long id) {
+		return service.getTvShowById(id);
+	}
+	
+	@GetMapping("/name/{name}")
+	public List<TvShows> getTvShowsByName(@PathVariable("name") String name) {
+		return service.getTvShowByName(name);
+	}
+	
 	@PostMapping
 	public TvShows postTvShows(@RequestBody TvShows tvShows) {
 		return service.postTvShows(tvShows);
@@ -35,5 +45,17 @@ public class TvShowsController {
 	public TvShows putTvShowsById(@RequestBody TvShows tvShows, @PathVariable("tvShowId") long id) {
 		return service.putTvShowById(tvShows,id);
 	}
+	
+	@PutMapping("/addOneEp/{tvShowId}")
+	public void addOneEp(@PathVariable("tvShowId") long id) {
+		service.addOneEp(id);
+	}
+	
+	@PutMapping("/subOneEp/{tvShowId")
+	public void subOneEp(@PathVariable("tvShowId") long id) {
+		service.subOneEp(id);
+	}
+	
+	
 
 }
